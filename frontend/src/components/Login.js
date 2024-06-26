@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
+import './Login.css'; // Import the CSS file
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -33,18 +34,33 @@ const Login = () => {
   };
 
   return (
-    <div className="login">
-      <form onSubmit={handleSubmit}>
+    <div className="login-container">
+      <form onSubmit={handleSubmit} className="login-form">
+        <h2>Login</h2>
         <label>
           Email ID *:
-          <input type="email" name="email" value={formData.email} onChange={handleChange} required />
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
         </label>
         <label>
           Password *:
-          <input type="password" name="password" value={formData.password} onChange={handleChange} required />
+          <input
+            type="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            required
+          />
         </label>
-        <button type="submit">Login</button>
-        {error && <p>{error}</p>}
+        <button type="submit" className="login-button">
+          Login
+        </button>
+        {error && <p className="error-message">{error}</p>}
       </form>
     </div>
   );
